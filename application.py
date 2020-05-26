@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 redLed = Led(14)
-blueLed = Led(15)
+greenLed = Led(15)
 
 @app.route('/')
 def home():
@@ -18,15 +18,24 @@ def home():
 def on(color):
     if color == "red":
         redLed.on()
-    elif color == "blue":
-        blueLed.on()
+    elif color == "green":
+        greenLed.on()
     return redirect(url_for('home'))
 
 @app.route('/off/<color>')
 def off(color):
     if color == "red":
         redLed.off()
-    elif color == "blue":
-        blueLed.off()
+    elif color == "green":
+        greenLed.off()
     return redirect(url_for('home'))
+
+@app.route('/blink/<color>')
+def blink(color):
+    if color == "red":
+        redLed.blink(10, 0.05)
+    elif color == "green":
+        greenLed.blink(10, 0.05)
+    return redirect(url_for('home'))
+
 
