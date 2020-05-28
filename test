@@ -1,1 +1,5 @@
 28-01192fadaedc
+
+
+redLed = Led(18)
+blueLed = Led(24)
